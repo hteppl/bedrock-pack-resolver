@@ -3,6 +3,8 @@ import os
 
 from PIL import Image
 
+from environment import Environment as ENV
+
 
 # Load the manifest JSON data
 def get_manifest(path: str) -> json:
@@ -40,6 +42,11 @@ def update_version_patch(manifest: json) -> None:
 def resolve_glyphs(data_path: str, output_path: str):
     result = []
     font_path = os.path.join(data_path, 'font')
+    
+    # Check if 'font' path is not exists
+    if not os.path.exists(font_path):
+        return result
+    
     files = [f for f in os.listdir(font_path) if f.startswith('glyph') and f.endswith('.png')]
     
     for file in files:
@@ -105,6 +112,12 @@ def is_empty_tile(tile):
 
 
 def main():
+    if ENV.update_version:
+        manifest = get_manifest('')
+        update_version_patch(manifest)
+        print('Updated version')
+    
+    
     data = resolve_glyphs('', 'rp_data')
     
     for glyph in data:

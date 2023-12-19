@@ -1,9 +1,19 @@
 name: 'Bedrock Pack Resolver'
 author: hteppl
-description: 'The GitHub action, that helps you to manage your Minecraft Bedrock resourcepack with ease'
+description: 'The GitHub action, that helps you to manage your Minecraft Bedrock resource pack with ease'
 branding:
   icon: 'archive'
   color: 'white'
+
+inputs:
+  update_version:
+    description: 'Update the resource pack version'
+    required: false
+    default: "False"
+  create_glyphs_tables:
+    description: 'Create the glyphs tables'
+    required: false
+    default: "False"
 
 runs:
   using: 'docker'
