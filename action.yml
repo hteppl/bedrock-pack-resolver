@@ -1,5 +1,10 @@
 name: 'Bedrock Pack Resolver'
 author: hteppl
 description: 'The GitHub action, that helps you to manage your Minecraft Bedrock resourcepack with ease'
+branding:
+  icon: 'archive'
+  color: 'white'
 
-inputs:
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
