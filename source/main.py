@@ -17,11 +17,12 @@ def write_file(output_path: str, name: str, content: str) -> None:
 def create_markdown_table(glyph_data: dict) -> str:
     glyph = glyph_data['name']
     name = glyph.split('_')[1]
-    table = '| Unicode | Image |\n| --------- | --------- |\n'
+    table = '| Letter | Unicode | Image |\n| --------- | --------- |\n'
 
     for row in glyph_data['data']:
         unicode_char = f'\\u{name}{row[0]}{row[1]}'
-        table += f'| {unicode_char} | ![]({row[2]}) |\n'
+        letter = bytes(unicode_char, 'utf-8').decode('unicode-escape')
+        table += f'| {letter} | {unicode_char} | ![]({row[2]}) |\n'
 
     return table
 
