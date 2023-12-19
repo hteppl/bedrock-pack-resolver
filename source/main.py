@@ -105,7 +105,7 @@ def is_empty_tile(tile):
 
 
 def main():
-    data = resolve_glyphs('rp-anarchy-master', 'rp_data')
+    data = resolve_glyphs('', 'rp_data')
     
     for glyph in data:
         table = create_markdown_table(glyph)
