@@ -1,8 +1,9 @@
 FROM python:3.11-slim-bookworm
 
-ADD requirements.txt requirements.txt
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+
+ADD requirements.txt /source/requirements.txt
 RUN pip3 install -r requirements.txt
 
-ADD source/* /
-WORKDIR ./
-ENTRYPOINT python3 main.py
+ENTRYPOINT cd /source/ && python3 main.py
